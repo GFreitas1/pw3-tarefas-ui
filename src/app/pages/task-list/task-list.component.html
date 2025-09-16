@@ -1,0 +1,29 @@
+<div class="task-list-container">
+  <h2>Lista de Tarefas</h2>
+  <button (click)="newTask()">Nova Tarefa</button>
+  <table>
+    <thead>
+      <tr>
+        <th>Título</th>
+        <th>Responsável</th>
+        <th>Status</th>
+        <th>Data Limite</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let task of tasks">
+        <td>{{ task.titulo }}</td>
+        <td>{{ task.responsavel }}</td>
+        <td>
+          <span [ngClass]="task.status.toLowerCase()">{{ task.status }}</span>
+        </td>
+        <td>{{ task.dataLimite | date: 'dd/MM/yyyy' }}</td>
+        <td>
+          <button (click)="editTask(task.id)">Editar</button>
+          <button (click)="deleteTask(task.id)">Excluir</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
